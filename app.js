@@ -11,7 +11,6 @@ export { subject };
 
 // Создаем субъект
 const subject = createSubject();
-console.log(loadLocalStorage());
 
 // // Создаем наблюдателей
 subject.subscribe(render);
@@ -19,6 +18,8 @@ subject.subscribe(saveLocalStorage);
 // const observer1 = (data) => {
 //   console.log('Наблюдатель 1: Новые данные', data);
 // };
+
+//Иниципализируем субьект состоянием из Local Storage
 window.onload = subject.initialization(loadLocalStorage());
 
 const output = document.getElementById('output');
@@ -58,14 +59,3 @@ button.addEventListener('click', function () {
   });
   input.value = '';
 });
-
-// subject.addData({
-//     name: '1',
-//     b: '2',
-//     c: '3',
-// });
-
-// subject.modifyData(0, 'b', 256)
-// subject.removeItem(0)
-// subject.modifyData(0,'a',5)
-// subject.modifyData(0,'c',3)
