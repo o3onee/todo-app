@@ -24,7 +24,7 @@ window.onload = subject.initialization(loadLocalStorage());
 
 const output = document.getElementById('output');
 const input = document.getElementById('input');
-const button = document.getElementById('test');
+const button = document.getElementById('addData');
 const doneButton = document.getElementById('doneButton');
 const unDoneButton = document.getElementById('unDoneButton');
 const allTasks = document.getElementById('all');
@@ -41,7 +41,7 @@ allTasks.addEventListener('click', function () {
 });
 
 input.addEventListener('keydown', function (event) {
-  if (event.key === 'Enter') {
+  if (event.key === 'Enter' && input.value.trim() !== '') {
     subject.addData({
       name: event.target.value,
       id: Date.now(),
@@ -52,10 +52,12 @@ input.addEventListener('keydown', function (event) {
 });
 
 button.addEventListener('click', function () {
-  subject.addData({
-    name: input.value,
-    id: Date.now(),
-    done: false,
-  });
-  input.value = '';
+  if (input.value.trim() !== '') {
+    subject.addData({
+      name: input.value,
+      id: Date.now(),
+      done: false,
+    });
+    input.value = '';
+  }
 });
