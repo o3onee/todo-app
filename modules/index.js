@@ -5,3 +5,4 @@ export * from './checkButton.js'
 export * from './loadLocalStorage.js';
 export * from './saveLocalStorage.js';
 export { subject } from '../app.js';
+export * from './authorization-form.js';

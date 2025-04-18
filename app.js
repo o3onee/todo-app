@@ -6,6 +6,7 @@ import {
   render,
   loadLocalStorage,
   saveLocalStorage,
+  authFormcreate,
 } from './modules/index.js';
 export { subject };
 
@@ -18,6 +19,24 @@ subject.subscribe(saveLocalStorage);
 // const observer1 = (data) => {
 //   console.log('Наблюдатель 1: Новые данные', data);
 // };
+authFormcreate();
+const hideButton = document.getElementById('hide');
+const app = document.getElementById('control');
+
+hideButton.addEventListener('click', () => {
+  if (app.classList.contains('hidden')) {
+    // app.style.display = 'block'; // Показываем элемент
+    app.classList.remove('hidden');
+    app.classList.add('block');
+    console.log(app.classList);
+  } else {
+    // app.style.display = 'none'; // Скрываем элемент
+    app.classList.remove('block');
+    app.classList.add('hidden');
+  }
+});
+
+
 
 //Иниципализируем субьект состоянием из Local Storage
 window.onload = subject.initialization(loadLocalStorage());

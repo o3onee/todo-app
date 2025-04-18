@@ -1,15 +1,11 @@
-<!DOCTYPE html>
-<html lang="ru">
+/** @format */
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Локальная авторизация</title>
-    <script src="script.js" defer></script>
-</head>
+export function authFormcreate() {
+  const authDiv = document.getElementById('authorization');
 
-<body>
-    <div class="authorization">
+  //   console.log(authDiv);
+
+  authDiv.innerHTML = `
     <h1 id="title">Вход</h1>
     <form id="loginForm">
         <label for="username">Имя пользователя:</label>
@@ -19,8 +15,9 @@
         <button type="submit">Войти</button>
     </form>
     <button id="logoutButton" style="display: none;">Выйти</button>
+    <button id="hide">Нажми меня</button>;
     <div id="message"></div>
-</div>
-</body>
+    `;
 
-</html>
+  return authDiv;
+}
