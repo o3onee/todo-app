@@ -16,6 +16,9 @@ export function createSubject() {
         this.data = data;
         this.notify(this.data);
         this.state = '';
+        this.currentUser = localStorage.getItem('currentUser')
+        // this.users = localStorage.getItem('users')
+        console.log(this.users)
       },
 
       // Метод для получения текущего состояния
@@ -28,7 +31,6 @@ export function createSubject() {
         this.data = [];
         this.filteredList = [];
         this.notify(this.data);
-
       },
 
       // Метод для добавления пользвательских данных
@@ -94,6 +96,9 @@ export function createSubject() {
       setCurrentUser(user) {
         this.currentUser = user;
         this.users.push(user);
+        localStorage.setItem('currentUser', JSON.stringify(user));
+        console.log(localStorage.getItem('currentUser'));
+        // localStorage.setItem('users', JSON.stringify(this.users));
         this.notify(this.data);
       },
 

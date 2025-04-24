@@ -14,25 +14,26 @@ export { subject };
 const subject = createSubject();
 
 // // Создаем наблюдателей
-subject.subscribe(render);
 subject.subscribe(saveLocalStorage);
+subject.subscribe(render);
+subject.subscribe(authFormcreate);
 
 //Создаем форму авторизации
 authFormcreate();
 
-const hideButton = document.getElementById('hide');
-const app = document.getElementById('control');
+// const hideButton = document.getElementById('hide');
+// const app = document.getElementById('control');
 
-hideButton.addEventListener('click', () => {
-  if (app.classList.contains('hidden')) {
-    app.classList.remove('hidden');
-    app.classList.add('block'); // Показываем элемент
-    console.log(app.classList);
-  } else {
-    app.classList.remove('block');
-    app.classList.add('hidden'); // Скрываем элемент
-  }
-});
+// hideButton.addEventListener('click', () => {
+//   if (app.classList.contains('hidden')) {
+//     app.classList.remove('hidden');
+//     app.classList.add('block'); // Показываем элемент
+//     console.log(app.classList);
+//   } else {
+//     app.classList.remove('block');
+//     app.classList.add('hidden'); // Скрываем элемент
+//   }
+// });
 
 //Иниципализируем субьект состоянием из Local Storage
 window.onload = subject.initialization(loadLocalStorage());
