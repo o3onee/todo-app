@@ -43,6 +43,11 @@ const button = document.getElementById('addData');
 const doneButton = document.getElementById('doneButton');
 const unDoneButton = document.getElementById('unDoneButton');
 const allTasks = document.getElementById('all');
+const resetButton = document
+  .getElementById('reset')
+  .addEventListener('click', function () {
+    subject.reset();
+  });
 
 doneButton.addEventListener('click', function () {
   subject.filterTasks(true);

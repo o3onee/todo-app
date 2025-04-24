@@ -1,5 +1,5 @@
 /** @format */
-
+import { subject } from './index.js';
 export function authFormcreate() {
   const authDiv = document.getElementById('authorization');
 
@@ -16,6 +16,12 @@ export function authFormcreate() {
     <button id="hide">Скрыть / отобразить</button>
     <div id="message"></div>
     `;
-
-  return authDiv;
+  const loginForm = document.getElementById('loginForm');
+  loginForm.addEventListener('submit', function (event) {
+    event.preventDefault();
+    const userName = document.getElementById('username').value;
+    subject.setCurrentUser(userName);
+    console.log(subject.users);
+  });
+  // return authDiv;
 }

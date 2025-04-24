@@ -15,11 +15,20 @@ export function createSubject() {
       initialization(data) {
         this.data = data;
         this.notify(this.data);
+        this.state = '';
       },
 
       // Метод для получения текущего состояния
       getTodos() {
         return this.data;
+      },
+
+      //Метод Rest
+      reset() {
+        this.data = [];
+        this.filteredList = [];
+        this.notify(this.data);
+
       },
 
       // Метод для добавления пользвательских данных
@@ -84,6 +93,8 @@ export function createSubject() {
       //Устанавливаем имя текущего пользователя
       setCurrentUser(user) {
         this.currentUser = user;
+        this.users.push(user);
+        this.notify(this.data);
       },
 
       // Свойство для хранения данных
