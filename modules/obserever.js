@@ -16,9 +16,10 @@ export function createSubject() {
         this.data = data;
         this.notify(this.data);
         this.state = '';
-        this.currentUser = localStorage.getItem('currentUser')
+        // this.currentUser = localStorage.getItem('currentUser');
+        this.currentUser = null;
         // this.users = localStorage.getItem('users')
-        console.log(this.users)
+        console.log(this.users);
       },
 
       // Метод для получения текущего состояния
@@ -97,7 +98,7 @@ export function createSubject() {
         this.currentUser = user;
         this.users.push(user);
         localStorage.setItem('currentUser', JSON.stringify(user));
-        console.log(localStorage.getItem('currentUser'));
+        // console.log(localStorage.getItem('currentUser'));
         // localStorage.setItem('users', JSON.stringify(this.users));
         this.notify(this.data);
       },
@@ -106,7 +107,7 @@ export function createSubject() {
       data: [], // Начальное состояние массива данных
       filteredList: [], // Массив с отфильтрованными элементами
       state: '', //Сотояние приложения. Отображаются все задачи или только отфильтрованные.
-      currentUser: '',
+      currentUser: null,
       users: [],
     };
   }

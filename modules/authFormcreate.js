@@ -3,22 +3,28 @@ import { subject } from './index.js';
 export function authFormcreate() {
   const authDiv = document.getElementById('authorization');
   authDiv.innerHTML = `
-  <h1 id="title">Вход</h1>
-  <form id="loginForm" class=''>
+  <form id="loginForm" class='pt-7'>
   <label for="username">Имя пользователя:</label>
   <input type="text" id="username" required>
   <label for="password">Пароль:</label>
   <input type="password" id="password" required>
   <button type="submit">Войти</button>
   </form>
+  <div id="message" class=''></div>
   <button id="logout">Выйти</button>
-  <div id="message"></div>
   `;
 
   const app = document.getElementById('control');
   const loginForm = document.getElementById('loginForm');
   const logoutBtn = document.getElementById('logout');
-  console.log(logoutBtn);
+  const message = document.getElementById('message');
+
+  // Строка состояния
+  if (subject.currentUser) {
+    message.innerText = `Вы вошли как ${subject.currentUser}`;
+  } else {
+    message.innerText = 'Вы не вошли в систему';
+  }
 
   //Кнопка выйти
   logoutBtn.addEventListener('click', function () {
@@ -43,23 +49,25 @@ export function authFormcreate() {
     event.preventDefault();
     const userName = document.getElementById('username').value;
 
-    //
+    //Если пользователь уже создан, устанавливаем его в качестве текущего
     if (subject.users.includes(userName)) {
-      subject.setCurrentUser(userName);
+      // subject.setCurrentUser(userName);
     } else {
       confirm(
         `Пользователь "${userName}" не найден. Желаете зарегистрироваться?`
       );
     }
+
     subject.setCurrentUser(userName);
 
     //Отображаем список дел после авторизации
     if (subject.currentUser) {
-      title.innerText = 'Вы вошли как ' + userName;
+      // console.log(message);
+      // message.innerText = 'Вы вошли как ' + subject.currentUser;
       app.classList.remove('hidden');
       app.classList.add('block');
-      // logoutButton.style.display = 'block';
     }
+
+    // subject.setCurrentUser(userName);
   });
-  // return authDiv;
 }
