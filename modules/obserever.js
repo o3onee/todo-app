@@ -18,9 +18,9 @@ export function createSubject() {
         this.state = '';
         // this.currentUser = localStorage.getItem('currentUser');
         this.currentUser = null;
-        this.users = localStorage.getItem('users')
-        this.users= JSON.parse(localStorage.getItem('users'))
-        console.log(this.users);
+        this.users = localStorage.getItem('users');
+        this.users = JSON.parse(localStorage.getItem('users'));
+        // console.log(this.users);
       },
 
       // Метод для получения текущего состояния
