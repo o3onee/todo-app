@@ -22,10 +22,9 @@ export function createSubject() {
         return this.data;
       },
 
-      // Метод для добавления данных
+      // Метод для добавления пользвательских данных
       addData(item) {
-        // this.data.push(item); // Добавляем элемент в состояние
-        this.data.unshift(item); // Добавляем элемент в состояние
+        this.data.unshift(item); // Добавляем элемент в массив данных
 
         if (this.state === '') {
           console.log('основной массив', this.state);
@@ -47,11 +46,7 @@ export function createSubject() {
           }
         });
 
-        // const obj = this.data[index];
-        // obj[key] = newValue;
-
         if (this.state === '') {
-          // console.log('основной массив',this.state)
           this.notify(this.data);
         } else {
           if (this.state == 'do') {
@@ -81,9 +76,21 @@ export function createSubject() {
         this.notify(this.data);
       },
 
+      //Получаем имя текущего пользователя
+      getCurrentUser() {
+        return this.currentUser;
+      },
+
+      //Устанавливаем имя текущего пользователя
+      setCurrentUser(user) {
+        this.currentUser = user;
+      },
+
       // Свойство для хранения данных
       data: [], // Начальное состояние массива данных
-      filteredList: [],
-      state: '',
+      filteredList: [], // Массив с отфильтрованными элементами
+      state: '', //Сотояние приложения. Отображаются все задачи или только отфильтрованные.
+      currentUser: '',
+      users: [],
     };
   }

@@ -16,27 +16,23 @@ const subject = createSubject();
 // // Создаем наблюдателей
 subject.subscribe(render);
 subject.subscribe(saveLocalStorage);
-// const observer1 = (data) => {
-//   console.log('Наблюдатель 1: Новые данные', data);
-// };
+
+//Создаем форму авторизации
 authFormcreate();
+
 const hideButton = document.getElementById('hide');
 const app = document.getElementById('control');
 
 hideButton.addEventListener('click', () => {
   if (app.classList.contains('hidden')) {
-    // app.style.display = 'block'; // Показываем элемент
     app.classList.remove('hidden');
-    app.classList.add('block');
+    app.classList.add('block'); // Показываем элемент
     console.log(app.classList);
   } else {
-    // app.style.display = 'none'; // Скрываем элемент
     app.classList.remove('block');
-    app.classList.add('hidden');
+    app.classList.add('hidden'); // Скрываем элемент
   }
 });
-
-
 
 //Иниципализируем субьект состоянием из Local Storage
 window.onload = subject.initialization(loadLocalStorage());
@@ -55,6 +51,7 @@ doneButton.addEventListener('click', function () {
 unDoneButton.addEventListener('click', function () {
   subject.filterTasks(false);
 });
+
 allTasks.addEventListener('click', function () {
   subject.allTasks();
 });
@@ -65,6 +62,7 @@ input.addEventListener('keydown', function (event) {
       name: event.target.value,
       id: Date.now(),
       done: false,
+      user: subject.getCurrentUser(),
     });
     event.target.value = '';
   }
@@ -76,6 +74,7 @@ button.addEventListener('click', function () {
       name: input.value,
       id: Date.now(),
       done: false,
+      user: getCurrentUser(),
     });
     input.value = '';
   }

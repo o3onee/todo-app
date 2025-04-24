@@ -3,8 +3,6 @@
 export function authFormcreate() {
   const authDiv = document.getElementById('authorization');
 
-  //   console.log(authDiv);
-
   authDiv.innerHTML = `
     <h1 id="title">Вход</h1>
     <form id="loginForm">
@@ -15,7 +13,7 @@ export function authFormcreate() {
         <button type="submit">Войти</button>
     </form>
     <button id="logoutButton" style="display: none;">Выйти</button>
-    <button id="hide">Нажми меня</button>;
+    <button id="hide">Скрыть / отобразить</button>
     <div id="message"></div>
     `;
 
