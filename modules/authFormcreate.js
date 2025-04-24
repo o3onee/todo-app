@@ -50,6 +50,9 @@ export function authFormcreate() {
     const userName = document.getElementById('username').value;
 
     //Если пользователь уже создан, устанавливаем его в качестве текущего
+    subject.setCurrentUser(userName);
+    console.log(subject.users);
+    
     if (subject.users.includes(userName)) {
       // subject.setCurrentUser(userName);
     } else {
@@ -58,7 +61,6 @@ export function authFormcreate() {
       );
     }
 
-    subject.setCurrentUser(userName);
 
     //Отображаем список дел после авторизации
     if (subject.currentUser) {

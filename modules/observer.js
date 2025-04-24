@@ -21,7 +21,9 @@ export function createSubject() {
       // this.currentUser = localStorage.getItem('currentUser');
       this.currentUser = null;
       this.users = localStorage.getItem('users');
-      this.users = JSON.parse(localStorage.getItem('users'));
+      // this.users = JSON.parse(localStorage.getItem('users'));
+      this.users = (JSON.parse(localStorage.getItem('users')) || []);
+
       // console.log(this.users);
     },
 
