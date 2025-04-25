@@ -42,7 +42,7 @@ export function createSubject() {
       this.data.unshift(item); // Добавляем элемент в массив данных
 
       if (this.state === '') {
-        console.log('основной массив', this.state);
+        // console.log('основной массив', this.state);
         this.notify(this.data);
       } else {
         if (this.state == 'do') {
