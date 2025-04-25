@@ -13,10 +13,18 @@ export { subject };
 // Создаем субъект
 const subject = createSubject();
 
+//Иниципализируем субьект состоянием из Local Storage
+// const initialization = loadLocalStorage();
+window.onload = subject.initialization(loadLocalStorage());
+// subject.initialization(initialization);
+
 // // Создаем наблюдателей
 subject.subscribe(saveLocalStorage);
 subject.subscribe(render);
 subject.subscribe(authFormcreate);
+
+
+
 
 //Создаем форму авторизации
 authFormcreate();
@@ -35,8 +43,7 @@ authFormcreate();
 //   }
 // });
 
-//Иниципализируем субьект состоянием из Local Storage
-window.onload = subject.initialization(loadLocalStorage());
+
 
 const output = document.getElementById('output');
 const input = document.getElementById('input');
