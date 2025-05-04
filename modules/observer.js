@@ -22,7 +22,7 @@ export function createSubject() {
       this.currentUser = null;
       this.users = localStorage.getItem('users');
       // this.users = JSON.parse(localStorage.getItem('users'));
-      this.users = (JSON.parse(localStorage.getItem('users')) || []);
+      this.users = JSON.parse(localStorage.getItem('users')) || [];
 
       // console.log(this.users);
     },
@@ -99,7 +99,8 @@ export function createSubject() {
     },
 
     //Устанавливаем имя текущего пользователя
-    setCurrentUser(user) {
+    setCurrentUser(user, password) {
+      console.log(user,password)
       this.currentUser = user;
       //Добавляем текущего пользователя в массив
       if (user && !this.users.includes(user)) this.users.push(user);

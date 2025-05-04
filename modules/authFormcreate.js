@@ -19,6 +19,35 @@ export function authFormcreate() {
   const logoutBtn = document.getElementById('logout');
   const message = document.getElementById('message');
 
+  //Обработчик формы регистрации
+  loginForm.addEventListener('submit', function (event) {
+    event.preventDefault();
+    const userName = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+
+    //Если пользователь уже создан, устанавливаем его в качестве текущего
+    subject.setCurrentUser(userName, password);
+    console.log(subject.users);
+
+    if (subject.users.includes(userName)) {
+      // subject.setCurrentUser(userName);
+    } else {
+      confirm(
+        `Пользователь "${userName}" не найден. Желаете зарегистрироваться?`
+      );
+    }
+
+    //Отображаем список дел после авторизации
+    if (subject.currentUser) {
+      // console.log(message);
+      // message.innerText = 'Вы вошли как ' + subject.currentUser;
+      app.classList.remove('hidden');
+      app.classList.add('block');
+    }
+
+    // subject.setCurrentUser(userName);
+  });
+
   // Строка состояния
   if (subject.currentUser) {
     message.innerText = `Вы вошли как ${subject.currentUser}`;
@@ -43,33 +72,4 @@ export function authFormcreate() {
     loginForm.classList.add('hidden');
     logoutBtn.classList.add('block');
   }
-
-  //Обработчик формы регистрации
-  loginForm.addEventListener('submit', function (event) {
-    event.preventDefault();
-    const userName = document.getElementById('username').value;
-
-    //Если пользователь уже создан, устанавливаем его в качестве текущего
-    subject.setCurrentUser(userName);
-    console.log(subject.users);
-    
-    if (subject.users.includes(userName)) {
-      // subject.setCurrentUser(userName);
-    } else {
-      confirm(
-        `Пользователь "${userName}" не найден. Желаете зарегистрироваться?`
-      );
-    }
-
-
-    //Отображаем список дел после авторизации
-    if (subject.currentUser) {
-      // console.log(message);
-      // message.innerText = 'Вы вошли как ' + subject.currentUser;
-      app.classList.remove('hidden');
-      app.classList.add('block');
-    }
-
-    // subject.setCurrentUser(userName);
-  });
 }
