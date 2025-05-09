@@ -26,27 +26,24 @@ export function authFormcreate() {
     const password = document.getElementById('password').value;
 
     //Если пользователь уже создан, устанавливаем его в качестве текущего
-    // console.log(subject.users);
 
-    if (subject.users.includes(userName)) {
+    if (userName && subject.users.includes(userName)) {
       subject.setCurrentUser(userName, password);
     } else {
       confirm(
-        `Пользователь "${userName}" не найден. Желаете зарегистрироваться?`
-        );
+        `Пользователь "${userName}" не найден. Добавляю нового пользователя`
+      );
+      if (true) {
         subject.addNewUser(userName, password);
         subject.setCurrentUser(userName, password);
+      }
     }
 
     //Отображаем список дел после авторизации
     if (subject.currentUser) {
-      // console.log(message);
-      // message.innerText = 'Вы вошли как ' + subject.currentUser;
       app.classList.remove('hidden');
       app.classList.add('block');
     }
-
-    // subject.setCurrentUser(userName);
   });
 
   // Строка состояния

@@ -32,7 +32,7 @@ export function createSubject() {
       return this.data;
     },
 
-    //Метод Rest
+    //Метод Reset
     reset() {
       this.data = [];
       this.filteredList = [];
@@ -100,7 +100,11 @@ export function createSubject() {
 
     //Добавление нового пользователя
     addNewUser(user, password) {
-      this.users.push(user);
+      const data = {
+        user: user,
+        password: password,
+      };
+      this.users.push(data);
       localStorage.setItem('users', JSON.stringify(this.users));
     },
 
