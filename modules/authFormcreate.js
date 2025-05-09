@@ -30,12 +30,12 @@ export function authFormcreate() {
 
     if (subject.users.includes(userName)) {
       subject.setCurrentUser(userName, password);
-      // subject.setCurrentUser(userName);
     } else {
       confirm(
         `Пользователь "${userName}" не найден. Желаете зарегистрироваться?`
-      );
-      subject.setCurrentUser(userName, password);
+        );
+        subject.addNewUser(userName, password);
+        subject.setCurrentUser(userName, password);
     }
 
     //Отображаем список дел после авторизации

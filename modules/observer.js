@@ -98,17 +98,20 @@ export function createSubject() {
       return this.currentUser;
     },
 
+    //Добавление нового пользователя
+    addNewUser(user, password) {
+      this.users.push(user);
+      localStorage.setItem('users', JSON.stringify(this.users));
+    },
+
     //Устанавливаем имя текущего пользователя
     setCurrentUser(user, password) {
-      // console.log(user,password)
       this.currentUser = user;
       //Добавляем текущего пользователя в массив
-      if (user && !this.users.includes(user)) {
-        this.users.push(user);
-      }
-      localStorage.setItem('users', JSON.stringify(this.users));
-      console.log(JSON.parse(localStorage.getItem('users')));
-
+      // if (user && !this.users.includes(user)) {
+      // this.users.push(user);
+      // }
+      // console.log(JSON.parse(localStorage.getItem('users')));
       this.notify(this.data);
     },
 
