@@ -26,11 +26,11 @@ export function authFormcreate() {
     const password = document.getElementById('password').value;
 
     //Проверяем существует ли данный пользователь
-    console.log(subject.isUser(userName));
+    console.log(subject.isUser(userName, password));
 
     //Если пользователь уже создан, устанавливаем его в качестве текущего
     // if (userName && subject.users.includes(userName)) {
-    if (userName.trim() !== '' && subject.isUser(userName)) {
+    if (userName.trim() !== '' && subject.isUser(userName, password)) {
       subject.setCurrentUser(userName);
     } else {
       confirm(

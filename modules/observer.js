@@ -116,8 +116,12 @@ export function createSubject() {
 
     //Проверка существует ли пользователь с заданным именем
     isUser(userToCheck, passwordToCheck) {
-      return this.users.some((user) => user.userName == userToCheck);
+      return this.users.some(
+        (user) =>
+          user.userName == userToCheck && user.password == passwordToCheck
+      );
     },
+
 
     // Свойство для хранения данных
     data: [], // Начальное состояние массива данных
