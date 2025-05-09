@@ -25,10 +25,12 @@ export function authFormcreate() {
     const userName = document.getElementById('username').value;
     const password = document.getElementById('password').value;
 
-    //Если пользователь уже создан, устанавливаем его в качестве текущего
+    //Проверяем существует ли данный пользователь
+    console.log(subject.isUser(userName));
 
+    //Если пользователь уже создан, устанавливаем его в качестве текущего
     if (userName && subject.users.includes(userName)) {
-      subject.setCurrentUser(userName, password);
+      subject.setCurrentUser(userName);
     } else {
       confirm(
         `Пользователь "${userName}" не найден. Добавляю нового пользователя`

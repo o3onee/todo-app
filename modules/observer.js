@@ -111,12 +111,12 @@ export function createSubject() {
     //Устанавливаем имя текущего пользователя
     setCurrentUser(user, password) {
       this.currentUser = user;
-      //Добавляем текущего пользователя в массив
-      // if (user && !this.users.includes(user)) {
-      // this.users.push(user);
-      // }
-      // console.log(JSON.parse(localStorage.getItem('users')));
       this.notify(this.data);
+    },
+
+    //Проверка существует ли пользователь с заданным именем
+    isUser(userToCheck) {
+      return this.users.some((user) => user.user == userToCheck);
     },
 
     // Свойство для хранения данных
