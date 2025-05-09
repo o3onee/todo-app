@@ -100,10 +100,12 @@ export function createSubject() {
 
     //Устанавливаем имя текущего пользователя
     setCurrentUser(user, password) {
-      console.log(user,password)
+      // console.log(user,password)
       this.currentUser = user;
       //Добавляем текущего пользователя в массив
-      if (user && !this.users.includes(user)) this.users.push(user);
+      if (user && !this.users.includes(user)) {
+        this.users.push(user);
+      }
       localStorage.setItem('users', JSON.stringify(this.users));
       console.log(JSON.parse(localStorage.getItem('users')));
 

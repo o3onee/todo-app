@@ -26,15 +26,16 @@ export function authFormcreate() {
     const password = document.getElementById('password').value;
 
     //Если пользователь уже создан, устанавливаем его в качестве текущего
-    subject.setCurrentUser(userName, password);
-    console.log(subject.users);
+    // console.log(subject.users);
 
     if (subject.users.includes(userName)) {
+      subject.setCurrentUser(userName, password);
       // subject.setCurrentUser(userName);
     } else {
       confirm(
         `Пользователь "${userName}" не найден. Желаете зарегистрироваться?`
       );
+      subject.setCurrentUser(userName, password);
     }
 
     //Отображаем список дел после авторизации
