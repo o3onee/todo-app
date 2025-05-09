@@ -101,7 +101,7 @@ export function createSubject() {
     //Добавление нового пользователя
     addNewUser(user, password) {
       const data = {
-        user: user,
+        userName: user,
         password: password,
       };
       this.users.push(data);
@@ -109,14 +109,14 @@ export function createSubject() {
     },
 
     //Устанавливаем имя текущего пользователя
-    setCurrentUser(user, password) {
+    setCurrentUser(user) {
       this.currentUser = user;
       this.notify(this.data);
     },
 
     //Проверка существует ли пользователь с заданным именем
-    isUser(userToCheck) {
-      return this.users.some((user) => user.user == userToCheck);
+    isUser(userToCheck, passwordToCheck) {
+      return this.users.some((user) => user.userName == userToCheck);
     },
 
     // Свойство для хранения данных

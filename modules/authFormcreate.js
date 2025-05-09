@@ -29,13 +29,14 @@ export function authFormcreate() {
     console.log(subject.isUser(userName));
 
     //Если пользователь уже создан, устанавливаем его в качестве текущего
-    if (userName && subject.users.includes(userName)) {
+    // if (userName && subject.users.includes(userName)) {
+    if (userName.trim() !== '' && subject.isUser(userName)) {
       subject.setCurrentUser(userName);
     } else {
       confirm(
         `Пользователь "${userName}" не найден. Добавляю нового пользователя`
       );
-      if (true) {
+      if (userName.trim() !== '') {
         subject.addNewUser(userName, password);
         subject.setCurrentUser(userName, password);
       }
