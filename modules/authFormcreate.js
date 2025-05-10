@@ -26,7 +26,6 @@ export function authFormcreate() {
     const password = document.getElementById('password').value;
 
     //Проверяем существует ли данный пользователь
-    console.log(subject.isUser(userName, password));
 
     // //Если пользователь уже создан, устанавливаем его в качестве текущего
     // // if (userName && subject.users.includes(userName)) {
@@ -42,7 +41,7 @@ export function authFormcreate() {
     //   }
     // }
 
-    //Тестовая версия установки текущего пользователя
+    //Тестовая версия добавления нового пользователя и установки текущего пользователя
     if (userName.trim() !== '') {
       subject.addNewUser(userName, password);
       subject.setCurrentUser(userName, password);
@@ -64,7 +63,7 @@ export function authFormcreate() {
 
   //Кнопка выйти
   logoutBtn.addEventListener('click', function () {
-    subject.setCurrentUser(null);
+    subject.logOut();
     app.classList.remove('block');
     app.classList.add('hidden');
   });

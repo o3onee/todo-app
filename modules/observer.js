@@ -101,7 +101,6 @@ export function createSubject() {
     //Добавление нового пользователя
     addNewUser(newUser, password) {
       const usersExists = this.users.some((user) => user.userName === newUser);
-      console.log(usersExists);
       if (usersExists) {
         console.log('Пользователь уже существует');
         return;
@@ -115,8 +114,21 @@ export function createSubject() {
     },
 
     //Устанавливаем имя текущего пользователя
-    setCurrentUser(user) {
-      this.currentUser = user;
+    setCurrentUser(userToCheck, password) {
+      const testedUser = this.users.some(
+        (user) => userToCheck == user.userName && password == user.password
+      );
+      if (testedUser) {
+        this.currentUser = userToCheck;
+        this.notify(this.data);
+        return;
+      }
+      console.log('Неправильный пароль');
+    },
+    
+    //Логаут
+    logOut() {
+      this.getCurrentUser = null
       this.notify(this.data);
     },
 
