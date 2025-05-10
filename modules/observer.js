@@ -105,10 +105,11 @@ export function createSubject() {
         console.log('Пользователь уже существует');
         return;
       }
-      const data = {
-        userName: user,
-        password: password,
-      };
+            console.log(`Добавляем новго пользователя ${newUser} `);
+            const data = {
+              userName: newUser,
+              password: password,
+            };
       this.users.push(data);
       localStorage.setItem('users', JSON.stringify(this.users));
     },
