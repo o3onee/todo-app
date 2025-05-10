@@ -68,6 +68,7 @@ export function authFormcreate() {
     app.classList.add('hidden');
   });
 
+  console.log(subject.currentUser);
   //Если текущий пользователь пустой, то отображаем форму регистрации
   if (!subject.currentUser) {
     loginForm.classList.remove('hidden');

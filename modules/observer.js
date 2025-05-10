@@ -128,7 +128,7 @@ export function createSubject() {
     
     //Логаут
     logOut() {
-      this.getCurrentUser = null
+      this.currentUser = null;
       this.notify(this.data);
     },
 
