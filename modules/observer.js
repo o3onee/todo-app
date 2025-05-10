@@ -99,7 +99,13 @@ export function createSubject() {
     },
 
     //Добавление нового пользователя
-    addNewUser(user, password) {
+    addNewUser(newUser, password) {
+      const usersExists = this.users.some((user) => user.userName === newUser);
+      console.log(usersExists);
+      if (usersExists) {
+        console.log('Пользователь уже существует');
+        return;
+      }
       const data = {
         userName: user,
         password: password,
@@ -121,7 +127,12 @@ export function createSubject() {
           user.userName == userToCheck && user.password == passwordToCheck
       );
     },
+    // //Проверка пароля
+    // isPasswordCorrect(userToCheck, passwordToCheck) {
+    //   const indexUser = this.users.map((user,index) => console.log(user,index))
 
+    //   }
+    // },
 
     // Свойство для хранения данных
     data: [], // Начальное состояние массива данных

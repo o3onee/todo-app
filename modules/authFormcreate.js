@@ -28,18 +28,24 @@ export function authFormcreate() {
     //Проверяем существует ли данный пользователь
     console.log(subject.isUser(userName, password));
 
-    //Если пользователь уже создан, устанавливаем его в качестве текущего
-    // if (userName && subject.users.includes(userName)) {
-    if (userName.trim() !== '' && subject.isUser(userName, password)) {
-      subject.setCurrentUser(userName);
-    } else {
-      confirm(
-        `Пользователь "${userName}" не найден. Добавляю нового пользователя`
-      );
-      if (userName.trim() !== '') {
-        subject.addNewUser(userName, password);
-        subject.setCurrentUser(userName, password);
-      }
+    // //Если пользователь уже создан, устанавливаем его в качестве текущего
+    // // if (userName && subject.users.includes(userName)) {
+    // if (userName.trim() !== '' && subject.isUser(userName, password)) {
+    //   subject.setCurrentUser(userName);
+    // } else {
+    //   confirm(
+    //     `Пользователь "${userName}" не найден. Добавляю нового пользователя`
+    //   );
+    //   if (userName.trim() !== '') {
+    //     subject.addNewUser(userName, password);
+    //     subject.setCurrentUser(userName, password);
+    //   }
+    // }
+
+    //Тестовая версия установки текущего пользователя
+    if (userName.trim() !== '') {
+      subject.addNewUser(userName, password);
+      subject.setCurrentUser(userName, password);
     }
 
     //Отображаем список дел после авторизации
